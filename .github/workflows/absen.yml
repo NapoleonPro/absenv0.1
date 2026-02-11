@@ -2,23 +2,29 @@ name: Absensi Otomatis
 
 on:
   schedule:
-    # Selasa
-    - cron: '5 1 * * 2'   # 08:05 WIB
-    - cron: '50 3 * * 2'  # 10:50 WIB
+    # Senin 10:45 WIB
+    - cron: '45 3 * * 1'
 
-    # Rabu
-    - cron: '5 1 * * 3'   # 08:05 WIB
-    - cron: '50 3 * * 3'  # 10:50 WIB
-    - cron: '5 7 * * 3'   # 14:05 WIB
+    # Selasa 10:45 WIB
+    - cron: '45 3 * * 2'
 
-    # Kamis
-    - cron: '5 7 * * 4'   # 14:05 WIB
-    - cron: '0 10 * * 4'  # 17:00 WIB
+    # Rabu 14:00 WIB
+    - cron: '0 7 * * 3'
 
-    # Jumat
-    - cron: '50 3 * * 5'  # 10:50 WIB
+    # Kamis 08:00 WIB
+    - cron: '0 1 * * 4'
+
+    # Kamis 14:00 WIB
+    - cron: '0 7 * * 4'
+
+    # Jumat 16:35 WIB
+    - cron: '35 9 * * 5'
+
+    # Sabtu 14:00 WIB
+    - cron: '0 7 * * 6'
 
   workflow_dispatch:
+
 jobs:
   run-absen:
     runs-on: ubuntu-latest
