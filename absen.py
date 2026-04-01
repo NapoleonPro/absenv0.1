@@ -27,9 +27,9 @@ def kirim_notif(tipe: str, judul: str, pesan: str):
     if not NTFY_TOPIC:
         return
     topic_map = {
-        "sukses": f"{NTFY_TOPIC}-bisa",
+        "bisa": f"{NTFY_TOPIC}-bisa",
         "info":   f"{NTFY_TOPIC}-info",
-        "error":  f"{NTFY_TOPIC}-gagal",
+        "gagal":  f"{NTFY_TOPIC}-gagal",
     }
     url = f"ntfy.sh/{topic_map.get(tipe, NTFY_TOPIC)}"
     os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" {url}')
