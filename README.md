@@ -11,10 +11,6 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-USK_SimKuliah-red?style=flat-square)
 
-**Bot absensi otomatis untuk [simkuliah.usk.ac.id](https://simkuliah.usk.ac.id)**
-Jalan sendiri via GitHub Actions — gratis, tanpa server, tanpa VPS.
-
-
 </div>
 
 ---
@@ -291,7 +287,6 @@ Bot ini dibuat untuk keperluan pribadi. Developer tidak bertanggung jawab atas s
 - **Selalu verifikasi manual** bahwa absensi kelen tercatat. Bot sudah kerja keras, giliran kelen cek sebentar
 - Bot tidak 100% sempurna — tapi setidaknya dia selalu mencoba. Beda dengan kelen.
 
-
 <div align="center">
 
 Made with too much coffee and too little sleep by [NapoleonPro](https://github.com/Napoleonnnnn)
@@ -299,3 +294,4 @@ Made with too much coffee and too little sleep by [NapoleonPro](https://github.c
 Kalau membantu, kasih ⭐ plis . bantu untuk portfolio. hehe. moga kita masuk surga, aamiin.
 
 </div>
+
