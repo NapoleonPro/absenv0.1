@@ -1,6 +1,7 @@
-# SimKuliah Bot" an
+# SimKuliah Bot
 
-> *"Solusi yang keren berasal dari pemikiran yang malas"*
+> *"Solusi yang keren berasal dari pemikiran yang malas"*  
+> *— kamu, sambil rebahan*
 
 <div align="center">
 
@@ -10,8 +11,8 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-USK_SimKuliah-red?style=flat-square)
 
-**Bot absensi otomatis untuk [simkuliah.usk.ac.id](https://simkuliah.usk.ac.id)**
-Jalan sendiri via GitHub Actions — gratis, tanpa server, tanpa VPS.
+**Bot absensi otomatis untuk [simkuliah.usk.ac.id](https://simkuliah.usk.ac.id)**  
+Jalan sendiri via GitHub Actions — gratis, tanpa server, tanpa VPS, tanpa kamu harus angkat badan dari kasur.
 
 [🇮🇩 Bahasa Indonesia](#-panduan-lengkap) · [🇬🇧 English](#-english-guide)
 
@@ -25,41 +26,46 @@ Jalan sendiri via GitHub Actions — gratis, tanpa server, tanpa VPS.
 Jadwal kuliah tiba  →  GitHub Actions aktif  →  Bot login SimKuliah
                                                        ↓
 HP kamu dapat notif  ←  ntfy.sh  ←  Absen berhasil diklik ✓
+     (kamu masih tidur)
 ```
 
-Bot ini melakukan 3 hal secara otomatis:
+Bot ini melakukan 3 hal yang seharusnya kamu lakukan sendiri tapi jelas tidak akan:
 
-1. **Login** ke SimKuliah — termasuk memecahkan CAPTCHA
-2. **Klik tombol absen** (+ tombol konfirmasi)
-3. **Kirim notifikasi** ke HP kamu via ntfy
+1. **Login** ke SimKuliah — otomatis, tanpa perlu kamu sentuh apapun
+2. **Klik tombol absen** (+ tombol konfirmasi, karena SimKuliah tidak semudah itu percaya kehadiran orang seperti kamu)
+3. **Kirim notifikasi** ke HP — supaya kamu setidaknya tahu bahwa hari ini ada kuliah, meski tidak hadir secara rohani
 
 ---
 
 ## 🇮🇩 Panduan Lengkap
 
+> Panduan ini ditulis sedetail mungkin karena pengalaman menunjukkan bahwa pengguna repo ini tidak bisa diberikan instruksi yang ambigu. Ikuti langkah demi langkah. Jangan skip. Kamu sudah cukup banyak skip hal-hal penting dalam hidup.
+
 ### Prasyarat
 
-Kamu hanya butuh:
+Sebelum mulai, pastikan kamu punya:
 
-- Akun **GitHub** (gratis) → [daftar di sini](https://github.com/signup)
-- Akun **SimKuliah** USK yang aktif
-- HP Android/iOS untuk notifikasi (opsional, tapi sangat dianjurkan)
+- Akun **GitHub** (gratis) → [daftar di sini](https://github.com/signup) — kalau belum punya, ini momen langka kamu melakukan sesuatu yang produktif
+- Akun **SimKuliah** USK yang aktif — semoga kamu masih ingat passwordnya
+- HP Android/iOS untuk notifikasi — opsional, tapi tanpanya kamu tidak akan pernah tahu apakah bot berhasil atau apakah kamu diam-diam sudah tidak tercatat hadir sejak tiga minggu lalu
 
 ---
 
 ### Langkah 1 — Fork Repositori Ini
 
-> Fork = menyalin repo ini ke akun GitHub kamu sendiri
+> Fork = menyalin repo ini ke akun GitHub kamu sendiri. Mirip plagiat, tapi legal dan justru dianjurkan.
 
 1. Klik tombol **Fork** di pojok kanan atas halaman ini
 2. Klik **Create fork**
-3. Selesai — sekarang kamu punya salinannya sendiri
+3. Selesai — tiga klik, dan ini mungkin pencapaian teknis terbesar hari ini
 
 ---
 
 ### Langkah 2 — Isi Data Rahasia (Secrets)
 
-Bot butuh NPM dan password kamu, tapi jangan ditulis langsung di kode. Gunakan **GitHub Secrets** agar aman.
+Bot butuh NPM dan password kamu. Jangan ditulis langsung di kode — selain tidak aman, itu juga tingkat kemalasan yang bahkan membuat pembuat repo ini geleng-geleng kepala.
+
+Gunakan **GitHub Secrets**. Ini fitur khusus untuk menyimpan data sensitif, dan ya, kamu perlu belajar cara pakainya. Tidak ada yang bisa menggantikan langkah ini.
 
 **Cara masuk ke halaman Secrets:**
 
@@ -67,58 +73,56 @@ Bot butuh NPM dan password kamu, tapi jangan ditulis langsung di kode. Gunakan *
 Repo kamu → Settings → Secrets and variables → Actions → New repository secret
 ```
 
-Tambahkan **3 secret** berikut satu per satu:
+Tambahkan **3 secret** berikut. Satu per satu. Jangan sekaligus, karena memang tidak bisa.
 
 | Nama Secret | Isi dengan | Contoh |
 |-------------|-----------|--------|
 | `NPM` | NPM kamu | `2108107010001` |
 | `PASSWORD` | Password SimKuliah kamu | `passwordkamu123` |
-| `NTFY_TOPIC` | Nama unik pilihanmu (bebas) | `budi-absen-usk` |
+| `NTFY_TOPIC` | Nama unik pilihanmu, bebas | `budi-absen-usk` |
 
-> **Catatan:** `NTFY_TOPIC` boleh dikosongkan kalau tidak mau notifikasi. Pilih nama yang unik dan susah ditebak orang lain.
+> **Catatan soal `NTFY_TOPIC`:** Boleh dikosongkan kalau tidak mau notifikasi. Tapi konsekuensinya: kamu tidak akan tahu kalau bot gagal, absensimu kosong, dan dosen sudah tiga kali panggil namamu di depan kelas sementara kamu masih di kasur menganggap semuanya beres.
 
 ---
 
-### Langkah 3 — Setup Notifikasi di HP (Opsional tapi Dianjurkan)
+### Langkah 3 — Setup Notifikasi di HP
 
-Notifikasi ini gratis dan tidak butuh akun.
+Gratis. Tidak butuh akun. Satu-satunya hal yang diminta adalah kamu install satu aplikasi — sesuatu yang biasanya kamu lakukan tanpa pikir panjang untuk hal-hal yang jauh kurang berguna.
 
 **a. Install app ntfy:**
 
 - Android → [Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy)
 - iOS → [App Store](https://apps.apple.com/app/ntfy/id1625396347)
 
-**b. Subscribe ke 3 topik ini** (ganti `budi-absen-usk` dengan `NTFY_TOPIC` milikmu):
+**b. Subscribe ke 3 topik berikut** (ganti `budi-absen-usk` dengan `NTFY_TOPIC` milikmu):
 
-| Topik | Kapan dikirim |
-|-------|--------------|
-| `budi-absen-usk-bisa` |  Absen berhasil |
-| `budi-absen-usk-info` |  Bot jalan, tidak ada tombol absen |
-| `budi-absen-usk-gagal` |  Terjadi error |
+| Topik | Artinya |
+|-------|---------|
+| `budi-absen-usk-bisa` | ✅ Absen berhasil — lanjut tidur, kamu aman |
+| `budi-absen-usk-info` | ℹ️ Bot jalan tapi tidak ada tombol absen — dosen belum buka, bukan salahmu |
+| `budi-absen-usk-gagal` | 💀 Error — ini saatnya kamu melakukan sesuatu sendiri, untuk sekali ini |
 
-Cara subscribe: buka app ntfy → ikon `+` → ketik nama topik → Subscribe.
+Cara subscribe: buka ntfy → ikon `+` → ketik nama topik → Subscribe. Empat langkah. Kamu pasti bisa.
 
 ---
 
 ### Langkah 4 — Update Jadwal Kuliah
 
-Bot menggunakan file `jadwal_cache.json` untuk mengetahui kapan harus jalan. File ini berisi tanggal dan jam setiap pertemuan per mata kuliah.
+Bot tidak bisa baca pikiran. Dia butuh file `jadwal_cache.json` untuk tahu kapan harus jalan. Tanpa file ini, bot tidak tahu kamu punya kuliah — dan jujur, kamu sendiri sering lupa juga.
 
-**Ada 2 cara mengisi file ini:**
+**Ada 2 cara:**
 
-#### Cara A — Generate Otomatis (Dianjurkan)
-
-Jalankan workflow **Refresh Jadwal Cache** dari tab Actions:
+#### Cara A — Generate Otomatis *(untuk kamu yang malas tapi masih punya batas)*
 
 ```
 Tab Actions → Refresh Jadwal Cache → Run workflow → Run workflow
 ```
 
-Bot akan login ke SimKuliah, scrape seluruh jadwal semester, dan menyimpannya otomatis. Ulangi ini tiap awal semester.
+Bot akan login, ambil seluruh jadwal semester, simpan otomatis. Ulangi tiap awal semester — atau satu kali seumur semester, lalu lupakan. Persis seperti niat olahraga.
 
-#### Cara B — Edit Manual
+#### Cara B — Edit Manual *(untuk kamu yang entah kenapa memilih jalan susah)*
 
-Buka `jadwal_cache.json` dan tambahkan entry sesuai format berikut:
+Buka `jadwal_cache.json`, tambahkan entry sesuai format ini:
 
 ```json
 {
@@ -134,13 +138,13 @@ Buka `jadwal_cache.json` dan tambahkan entry sesuai format berikut:
 }
 ```
 
-> **Penting:** Field `"tanggal"` harus format `YYYY-MM-DD`. Field `"tanggal_str"` boleh diisi sembarang (hanya label).
+> **Penting:** `"tanggal"` harus format `YYYY-MM-DD`. Salah format, bot tidak jalan, absen kosong, itu salahmu sepenuhnya. `"tanggal_str"` boleh diisi sembarang — label doang, tidak ada yang membaca.
 
 ---
 
 ### Langkah 5 — Sesuaikan Jadwal Cron
 
-Edit file `.github/workflows/absen.yml`. Cron berjalan dalam waktu **UTC** — kurangi 7 jam dari WIB.
+Ini bagian yang butuh sedikit usaha otak. Cron berjalan dalam waktu **UTC** — kurangi 7 jam dari WIB. Aku tahu kamu tidak suka matematika, makanya sudah dibuatkan tabelnya.
 
 **Rumus:** `WIB - 7 jam = UTC`
 
@@ -153,13 +157,15 @@ Edit file `.github/workflows/absen.yml`. Cron berjalan dalam waktu **UTC** — k
 
 **Kode hari:** `1` = Senin, `2` = Selasa, `3` = Rabu, `4` = Kamis, `5` = Jumat, `6` = Sabtu, `0` = Minggu
 
-**Contoh — kuliah Kamis jam 08.00 WIB:**
+Edit file `.github/workflows/absen.yml`. Sesuaikan dengan jadwal kuliahmu yang — aku yakin — sudah kamu hafal karena selalu hadir. *Ahem.*
+
+**Contoh — kuliah Kamis jam 08.00 WIB** (jam di mana kamu biasanya baru memejamkan mata):
 
 ```yaml
 - cron: '0 1 * * 4'
 ```
 
-**Contoh — kuliah Rabu jam 14.00 dan 16.35 WIB:**
+**Contoh — Rabu double sesi:**
 
 ```yaml
 - cron: '0 7 * * 3'   # 14.00 WIB
@@ -170,70 +176,76 @@ Edit file `.github/workflows/absen.yml`. Cron berjalan dalam waktu **UTC** — k
 
 ### Langkah 6 — Test Pertama Kali
 
-Sebelum mengandalkan bot, pastikan semua berjalan lancar:
+Sebelum menyerahkan tanggung jawab akademikmu kepada sekumpulan cron job, tes dulu. Ini satu-satunya langkah yang benar-benar membutuhkan perhatianmu — tolong hadir secara penuh, setidaknya untuk ini.
 
 1. Buka tab **Actions** di repo kamu
 2. Klik **Absensi Otomatis** di sidebar kiri
-3. Klik tombol **Run workflow** → **Run workflow**
-4. Tunggu ~1-2 menit, lalu klik run yang muncul untuk melihat log
+3. Klik **Run workflow** → **Run workflow**
+4. Tunggu ~1-2 menit — ya, kamu perlu menunggu. Tidak ada yang instan kecuali mie.
 
-**Interpretasi hasil:**
+**Baca hasilnya:**
 
-- 🟢 Log menampilkan `Absen berhasil` → semuanya beres
-- 🟡 Log menampilkan `tidak ada tombol absen` → bot jalan, tapi memang tidak ada jadwal aktif
-- 🔴 Log menampilkan `Login gagal` → cek NPM/Password di Secrets, atau CAPTCHA gagal (coba run lagi)
+- 🟢 `Absen berhasil` → semua beres, kamu resmi bisa rebahan dengan hati tenang
+- 🟡 `tidak ada tombol absen` → bot jalan normal, tidak ada jadwal aktif saat ini. Santai
+- 🔴 `Login gagal` → cek NPM dan password di Secrets. Kemungkinan besar ada typo karena diketik sambil ngantuk
 
 ---
 
-### Jadwal Kerja Bot
+### Cara Kerja Bot (Lebih Detail)
 
-Bot akan aktif otomatis sesuai cron yang kamu set. Setelah aktif:
+Setiap kali bot aktif, dia melakukan ini:
 
-1. Bot cek `jadwal_cache.json` — apakah hari ini ada jadwal?
-2. Jika ada → login SimKuliah → klik absen
-3. Jika tidak ada → kirim notif info → berhenti
+1. Cek `jadwal_cache.json` — apakah hari ini ada jadwal kuliah?
+2. Kalau ada → login SimKuliah → klik tombol absen → kirim notif ke HP kamu yang mungkin sedang telungkup di suatu tempat
+3. Kalau tidak ada → kirim notif info → berhenti dengan anggun
 
-> Bot bisa aktif beberapa kali sehari. Tidak masalah — kalau tidak ada jadwal, bot langsung berhenti tanpa melakukan apa-apa.
+Bot tidak pernah bolos. Bot tidak pernah lupa. Bot tidak perlu diingatkan dua kali. Renungkan itu.
 
 ---
 
 ### Refresh Jadwal Tiap Semester
 
-Di awal semester baru, jalankan **Refresh Jadwal Cache** secara manual:
+Awal semester baru = jadwal baru = kamu perlu refresh cache. Caranya:
 
 ```
 Tab Actions → Refresh Jadwal Cache → Run workflow
 ```
 
-Atau biarkan berjalan otomatis — workflow ini sudah dijadwalkan tiap awal Februari dan Agustus.
+Atau biarkan workflow otomatis yang jalan tiap Februari dan Agustus. Satu hal dalam hidupmu yang benar-benar berjalan sendiri tanpa perlu kamu urus — manfaatkan sebaik mungkin.
 
 ---
 
 ### Troubleshooting
 
+Karena pasti ada yang tidak berjalan mulus, dan kemungkinan besar itu bukan salah botnya:
+
 | Masalah | Kemungkinan penyebab | Solusi |
 |---------|---------------------|--------|
-| Login gagal terus | CAPTCHA salah terbaca | Coba run lagi 1-2x, biasanya langsung berhasil |
-| Tidak ada tombol absen padahal ada jadwal | Absen belum dibuka dosen | Tunggu dosen membuka sesi absen |
-| Notif tidak masuk | NTFY_TOPIC salah | Pastikan nama topik di app sama persis dengan secret |
-| Bot tidak jalan sesuai jadwal | Cron salah timezone | Pastikan sudah konversi WIB ke UTC |
-| `jadwal_cache.json` kosong | Belum di-refresh | Jalankan workflow Refresh Jadwal Cache |
+| Login gagal terus | NPM atau password salah di Secrets | Cek lagi. Pelan-pelan. Jangan buru-buru. |
+| Tidak ada tombol absen padahal ada jadwal | Dosen belum buka sesi absen | Tunggu. Dosen juga manusia. Beda dengan kamu yang bahkan hadir saja perlu diwakilkan. |
+| Notif tidak masuk | Nama NTFY_TOPIC tidak cocok | Pastikan nama topik di app **sama persis** dengan yang di Secrets. Huruf kapital beda = topik beda. |
+| Bot tidak jalan sesuai jadwal | Cron salah timezone | Sudah ada tabelnya di Langkah 5. Baca lagi. |
+| `jadwal_cache.json` kosong | Lupa refresh | Jalankan workflow Refresh Jadwal Cache. Tidak ada shortcut. |
 
 ---
 
 ### Penjelasan File
 
+Untuk yang penasaran isi repo ini ngapain aja — apresiasi rasa ingin tahumu yang langka:
+
 | File | Fungsi |
 |------|--------|
-| `absen_runner.py` | Script utama — cek jadwal, login, klik absen, kirim notif |
-| `refresh_jadwal.py` | Scrape jadwal semester dari SimKuliah ke `jadwal_cache.json` |
-| `jadwal_cache.json` | Database jadwal pertemuan (di-commit ke repo) |
-| `.github/workflows/absen.yml` | Jadwal cron dan pipeline GitHub Actions untuk absen |
-| `.github/workflows/refresh.yml` | Workflow untuk refresh jadwal tiap awal semester |
+| `absen_runner.py` | Script utama — tulang punggung seluruh operasi ini |
+| `refresh_jadwal.py` | Scrape jadwal semester dari SimKuliah |
+| `jadwal_cache.json` | Database jadwal. Satu-satunya entitas di sini yang tahu jadwal kuliahmu lebih baik dari kamu |
+| `.github/workflows/absen.yml` | Jadwal cron — yang kerja keras sementara kamu tidak |
+| `.github/workflows/refresh.yml` | Workflow refresh jadwal tiap awal semester |
 
 ---
 
-### Jalankan Lokal (untuk Developer)
+### Jalankan Lokal *(khusus yang mau repot)*
+
+Kalau mau coba di komputer sendiri, silakan. Ini justru membuktikan bahwa kamu tidak sesantai yang kamu kira.
 
 ```bash
 # Clone repo
@@ -241,21 +253,21 @@ git clone https://github.com/NapoleonPro/absenv0.1.git
 cd absenv0.1
 
 # Install dependencies
-pip install selenium ddddocr python-dotenv
+pip install selenium python-dotenv
 
 # Buat file .env
 echo "NPM=npm_kamu" > .env
 echo "PASSWORD=password_kamu" >> .env
 echo "NTFY_TOPIC=topic_kamu" >> .env
 
-# Refresh jadwal
+# Refresh jadwal dulu
 python refresh_jadwal.py
 
-# Jalankan absen
+# Baru jalankan absen
 python absen_runner.py
 ```
 
-> Butuh Google Chrome terinstall di lokal.
+> Butuh Google Chrome terinstall. Kalau belum ada, install dulu — ya, kamu harus melakukan satu hal lagi.
 
 ---
 
@@ -264,38 +276,39 @@ python absen_runner.py
 | Komponen | Kegunaan |
 |----------|----------|
 | Python 3.12 | Runtime utama |
-| Selenium | Otomatisasi browser |
-| ddddocr | Solve CAPTCHA otomatis |
-| Chrome headless | Browser engine tanpa tampilan |
+| Selenium | Otomatisasi browser — melakukan klik-klik yang seharusnya tanggung jawabmu |
+| Chrome headless | Browser yang bekerja diam-diam di balik layar, tidak seperti kamu |
 | python-dotenv | Baca `.env` saat development lokal |
-| GitHub Actions | Scheduler gratis, jalan di cloud |
-| ntfy.sh | Push notification gratis ke HP |
+| GitHub Actions | Scheduler gratis yang lebih rajin dari pengguna repo ini |
+| ntfy.sh | Satu-satunya yang masih mau memberi kabar ke HP kamu |
 
 ---
 
 ### ⚠️ Disclaimer
 
-Bot ini dibuat untuk keperluan pribadi. Developer tidak bertanggung jawab atas segala konsekuensi akademik akibat penggunaan bot ini.
+Bot ini dibuat untuk keperluan pribadi. Developer tidak bertanggung jawab atas segala konsekuensi akademik — termasuk tapi tidak terbatas pada: absen tetap kosong karena ada bug yang tidak dilaporkan, dosen yang tiba-tiba kenal mukamu di lorong padahal kamu "selalu hadir", atau IPK yang tetap tidak naik meski kehadiran sudah 100%.
 
-- SimKuliah bisa update tampilan kapan saja — kalau bot tiba-tiba tidak jalan, cek apakah ada perubahan di web-nya
-- Selalu **verifikasi manual** bahwa absensimu tercatat di SimKuliah
-- CAPTCHA bisa salah baca — bot tidak 100% sempurna, pantau notifikasi secara berkala
+- SimKuliah bisa update tampilannya kapan saja — kalau bot tiba-tiba tidak jalan, itu bukan hantu, cek dulu perubahannya
+- **Selalu verifikasi manual** bahwa absensimu tercatat. Bot sudah kerja keras, giliran kamu cek sebentar
+- Bot tidak 100% sempurna — tapi setidaknya dia selalu mencoba. Beda dengan kamu.
 
 ---
 
 ## 🇬🇧 English Guide
 
+> This section exists because apparently even the English-speaking lazy deserve automation too.
+
 ### Prerequisites
 
 - A free **GitHub** account → [sign up here](https://github.com/signup)
-- An active **SimKuliah USK** account
-- Android/iOS phone for notifications (optional but recommended)
+- An active **SimKuliah USK** account — hopefully you still remember the password
+- Android/iOS phone for notifications (optional, but skipping this means you'll never know when the bot fails and you've quietly been absent for a month)
 
 ---
 
 ### Step 1 — Fork This Repository
 
-Click **Fork** → **Create fork**. You now have your own copy.
+Click **Fork** → **Create fork**. That's it. Two clicks. You've already done more today than expected.
 
 ### Step 2 — Add GitHub Secrets
 
@@ -305,41 +318,45 @@ Go to: **Settings → Secrets and variables → Actions → New repository secre
 |-------------|-------------|---------|
 | `NPM` | Your student ID | `2108107010001` |
 | `PASSWORD` | Your SimKuliah password | `yourpassword` |
-| `NTFY_TOPIC` | A unique name you choose | `budi-absen-usk` |
+| `NTFY_TOPIC` | A unique name of your choosing | `budi-absen-usk` |
 
-### Step 3 — Set Up Push Notifications (Optional)
+Don't skip this. There is no workaround. This is the one step that actually requires you to do something.
+
+### Step 3 — Set Up Push Notifications (Strongly Recommended)
 
 1. Install **ntfy** → [Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy) / [iOS](https://apps.apple.com/app/ntfy/id1625396347)
-2. Subscribe to 3 topics (replace `budi-absen-usk` with your chosen topic):
-   - `budi-absen-usk-bisa` — attendance successful
-   - `budi-absen-usk-info` — bot ran, no attendance button found
-   - `budi-absen-usk-gagal` — an error occurred
+2. Subscribe to 3 topics (replace `budi-absen-usk` with your topic):
+   - `budi-absen-usk-bisa` — attendance recorded. Go back to sleep, you've earned it
+   - `budi-absen-usk-info` — bot ran, no attendance button. Not your fault this time
+   - `budi-absen-usk-gagal` — something broke. This is the one notification that requires a human response — that human being you
 
 ### Step 4 — Load Your Schedule
 
-Run the **Refresh Jadwal Cache** workflow from the Actions tab, or manually edit `jadwal_cache.json` with your class schedule. Each entry needs a `"tanggal"` field in `YYYY-MM-DD` format.
+Run **Refresh Jadwal Cache** from the Actions tab. The bot will scrape your full semester schedule automatically. Do this once per semester — which is probably the only calendar awareness you'll demonstrate all semester.
+
+Or manually edit `jadwal_cache.json`. Each entry needs `"tanggal"` in `YYYY-MM-DD` format. If you get that wrong, the attendance gap is entirely on you.
 
 ### Step 5 — Set Your Cron Schedule
 
-Edit `.github/workflows/absen.yml`. GitHub Actions uses **UTC** — subtract 7 hours from WIB (Western Indonesia Time).
+Edit `.github/workflows/absen.yml`. GitHub Actions runs on **UTC** — subtract 7 hours from WIB. A conversion table is provided in the Indonesian section because, yes, we anticipated this would be an issue.
 
 ### Step 6 — Test It
 
-Go to **Actions → Absensi Otomatis → Run workflow**. Check the logs after ~2 minutes.
+Go to **Actions → Absensi Otomatis → Run workflow**. Wait 2 minutes. Read the logs. If login failed, check your Secrets for typos — a very human kind of mistake.
 
 ---
 
 ### How It Works
 
-1. Bot checks `jadwal_cache.json` — is there a class today?
-2. If yes → logs in to SimKuliah (solves CAPTCHA automatically) → clicks the attendance button
-3. Sends a push notification to your phone with the result
+1. Bot checks `jadwal_cache.json` — is there class today?
+2. If yes → logs in → clicks attend → notifies your phone, which is probably face-down somewhere
+3. If no → sends info notification → stops. The bot has better time management than you.
 
 ---
 
 ### Disclaimer
 
-This project is for personal use only. The developer is not responsible for any academic policy violations. Always verify your attendance was recorded on SimKuliah. CAPTCHA solving is not 100% accurate — monitor notifications periodically.
+This project is for personal use only. The developer accepts no responsibility for academic consequences, attendance records, or the quiet existential dread of realizing a bot has been more present at your university than you have. Always verify your attendance on SimKuliah. The bot tries its best — a concept worth reflecting on.
 
 ---
 
@@ -347,7 +364,6 @@ This project is for personal use only. The developer is not responsible for any 
 
 Made with too much coffee and too little sleep by [NapoleonPro](https://github.com/NapoleonPro)
 
-Kalau membantu, kasih ⭐ dong — gratis kok.
+Kalau membantu, kasih ⭐ dong — gratis kok. Sekali klik. Bahkan kamu pasti bisa.
 
 </div>
-
