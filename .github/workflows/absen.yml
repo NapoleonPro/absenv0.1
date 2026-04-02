@@ -46,4 +46,4 @@ jobs:
           NPM: ${{ secrets.NPM }}
           PASSWORD: ${{ secrets.PASSWORD }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-        run: python -u absen.py
+        run: python -u absen_runner.py
