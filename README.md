@@ -14,7 +14,6 @@
 **Bot absensi otomatis untuk [simkuliah.usk.ac.id](https://simkuliah.usk.ac.id)**
 Jalan sendiri via GitHub Actions — gratis, tanpa server, tanpa VPS.
 
-[🇮🇩 Bahasa Indonesia](#-panduan-lengkap) · [🇬🇧 English](#-english-guide)
 
 </div>
 
@@ -292,73 +291,6 @@ Bot ini dibuat untuk keperluan pribadi. Developer tidak bertanggung jawab atas s
 - **Selalu verifikasi manual** bahwa absensi kelen tercatat. Bot sudah kerja keras, giliran kelen cek sebentar
 - Bot tidak 100% sempurna — tapi setidaknya dia selalu mencoba. Beda dengan kelen.
 
----
-
-## 🇬🇧 English Guide
-
-> This section exists because apparently even the English-speaking lazy deserve automation too.
-
-### Prerequisites
-
-- A free **GitHub** account → [sign up here](https://github.com/signup)
-- An active **SimKuliah USK** account — hopefully you still remember the password
-- Android/iOS phone for notifications (optional, but skipping this means you'll never know when the bot fails and you've quietly been absent for a month)
-
----
-
-### Step 1 — Fork This Repository
-
-Click **Fork** → **Create fork**. That's it. Two clicks. You've already done more today than expected.
-
-### Step 2 — Add GitHub Secrets
-
-Go to: **Settings → Secrets and variables → Actions → New repository secret**
-
-| Secret Name | What to Put | Example |
-|-------------|-------------|---------|
-| `NPM` | Your student ID | `2108107010001` |
-| `PASSWORD` | Your SimKuliah password | `yourpassword` |
-| `NTFY_TOPIC` | A unique name of your choosing | `budi-absen-usk` |
-
-Don't skip this. There is no workaround. This is the one step that actually requires you to do something.
-
-### Step 3 — Set Up Push Notifications (Strongly Recommended)
-
-1. Install **ntfy** → [Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy) / [iOS](https://apps.apple.com/app/ntfy/id1625396347)
-2. Subscribe to 3 topics (replace `budi-absen-usk` with your topic):
-   - `budi-absen-usk-bisa` — attendance recorded. Go back to sleep, you've earned it
-   - `budi-absen-usk-info` — bot ran, no attendance button. Not your fault this time
-   - `budi-absen-usk-gagal` — something broke. This is the one notification that requires a human response — that human being you
-
-### Step 4 — Load Your Schedule
-
-Run **Refresh Jadwal Cache** from the Actions tab. The bot will scrape your full semester schedule automatically. Do this once per semester — which is probably the only calendar awareness you'll demonstrate all semester.
-
-Or manually edit `jadwal_cache.json`. Each entry needs `"tanggal"` in `YYYY-MM-DD` format. If you get that wrong, the attendance gap is entirely on you.
-
-### Step 5 — Set Your Cron Schedule
-
-Edit `.github/workflows/absen.yml`. GitHub Actions runs on **UTC** — subtract 7 hours from WIB. A conversion table is provided in the Indonesian section because, yes, we anticipated this would be an issue.
-
-### Step 6 — Test It
-
-Go to **Actions → Absensi Otomatis → Run workflow**. Wait 2 minutes. Read the logs. If login failed, check your Secrets for typos — a very human kind of mistake.
-
----
-
-### How It Works
-
-1. Bot checks `jadwal_cache.json` — is there class today?
-2. If yes → logs in → clicks attend → notifies your phone, which is probably face-down somewhere
-3. If no → sends info notification → stops. The bot has better time management than you.
-
----
-
-### Disclaimer
-
-This project is for personal use only. The developer accepts no responsibility for academic consequences, attendance records, or the quiet existential dread of realizing a bot has been more present at your university than you have. Always verify your attendance on SimKuliah. The bot tries its best — a concept worth reflecting on.
-
----
 
 <div align="center">
 
