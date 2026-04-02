@@ -124,7 +124,7 @@ Buka `jadwal_cache.json`, tambahkan entry sesuai format ini:
   "pertemuan": 1,
   "kode_mk": "STIK3034",
   "nama_mk": "PATTERN RECOGNITION AND MACHINE LEARNING",
-  "dosen": "Rizka Ramadhana, M.T.",
+  "dosen": "Prof M. Ammar Fasya, M.T.",
   "tanggal_str": "12-02-2026",
   "tanggal": "2026-02-12",
   "hari": "Kamis",
