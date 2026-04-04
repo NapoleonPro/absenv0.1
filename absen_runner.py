@@ -32,11 +32,20 @@ def get_jadwal_hari_ini(jadwal: list[dict]) -> list[dict]:
     return [mk for mk in jadwal if mk.get("tanggal") == hari_ini]
 
 
-def kirim_notif(judul: str, pesan: str, topic: str):
-    """Kirim notifikasi via ntfy.sh."""
+def kirim_notif_bisa(judul: str, pesan: str, topic: str):
     if not topic:
         return
-    os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" ntfy.sh/{topic}')
+    os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" ntfy.sh/{topic}-bisa')
+
+def kirim_notif_info(judul: str, pesan: str, topic: str):
+    if not topic:
+        return
+    os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" ntfy.sh/{topic}-info')
+
+def kirim_notif_gagal(judul: str, pesan: str, topic: str):
+    if not topic:
+        return
+    os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" ntfy.sh/{topic}-gagal')
 
 
 def main():
@@ -52,13 +61,13 @@ def main():
 
     jadwal = load_cache()
     if not jadwal:
-        kirim_notif("Absen ERROR", "jadwal_cache.json tidak ditemukan.", ntfy_topic)
+        kirim_notif_gagal("Absen ERROR", "jadwal_cache.json tidak ditemukan.", ntfy_topic)
         sys.exit(1)
 
     jadwal_hari_ini = get_jadwal_hari_ini(jadwal)
     if not jadwal_hari_ini:
         print("  Tidak ada jadwal kuliah hari ini. Skip.")
-        kirim_notif("Tidak Ada Jadwal", "Bot berjalan, tidak ada MK hari ini.", ntfy_topic)
+        kirim_notif_info("Tidak Ada Jadwal", "Bot berjalan, tidak ada MK hari ini.", ntfy_topic)
         sys.exit(0)
 
     print(f" Jadwal hari ini ({len(jadwal_hari_ini)} sesi):")
@@ -104,7 +113,7 @@ def main():
 
         if "login" in driver.current_url.lower():
             print(" Login gagal! CAPTCHA mungkin salah terbaca.")
-            kirim_notif("Absen ERROR", "Login gagal, CAPTCHA salah terbaca.", ntfy_topic)
+            kirim_notif_gagal("Absen ERROR", "Login gagal, CAPTCHA salah terbaca.", ntfy_topic)
             sys.exit(1)
 
         print(" Login berhasil!")
@@ -135,15 +144,15 @@ def main():
 
         if absen_berhasil == 0:
             print("  Tidak ada tombol absen yang tersedia.")
-            kirim_notif("Tidak Ada Jadwal", "Bot berjalan tapi tidak ada tombol absen.", ntfy_topic)
+            kirim_notif_info("Tidak Ada Tombol Absen", "Bot login berhasil tapi tidak ada tombol absen.", ntfy_topic)
         else:
             pesan = f"{absen_berhasil} absensi berhasil dilakukan."
             print(f"\n {pesan}")
-            kirim_notif("Absen Berhasil", pesan, ntfy_topic)
+            kirim_notif_bisa("Absen Berhasil", pesan, ntfy_topic)
 
     except Exception as e:
         print(f" Error: {e}")
-        kirim_notif("Absen ERROR", f"Error: {e}", ntfy_topic)
+        kirim_notif_gagal("Absen ERROR", f"Error: {e}", ntfy_topic)
         sys.exit(1)
 
     finally:

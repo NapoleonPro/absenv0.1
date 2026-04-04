@@ -63,7 +63,6 @@ Bot butuh NPM dan password. Jangan ditulis langsung di kode — selain tidak ama
 Gunakan **GitHub Secrets**. Ini fitur khusus untuk menyimpan data sensitif, dan ya, kalian perlu belajar cara pakainya. Tidak ada yang bisa menggantikan langkah ini.
 
 **Cara masuk ke halaman Secrets:**
-
 ```
 Repo → Settings → Secrets and variables → Actions → New repository secret
 ```
@@ -74,9 +73,9 @@ Tambahkan **3 secret** berikut. Satu per satu. Jangan sekaligus, karena memang t
 |-------------|-----------|--------|
 | `NPM` | NPM kalian | `2108107010001` |
 | `PASSWORD` | Password SimKuliah  | `passwordkalian123` |
-| `NTFY_TOPIC` | Nama unik pilihan kalian, bebas | `budi-absen-usk` |
+| `NTFY_TOPIC` | 2 kata identifier unik pilihan kalian | `budi-absen` |
 
-> **Catatan soal `NTFY_TOPIC`:** Boleh dikosongkan kalau tidak mau notifikasi. Tapi konsekuensinya: kalian tidak akan tahu kalau bot gagal, absensi kalian kosong, dan dosen sudah tiga kali panggil nama kalian di depan kelas sementara kalian masih di kasur menganggap semuanya beres.
+> **Catatan soal `NTFY_TOPIC`:** Ini adalah identifier unik kalian — bebas diisi apa saja, asal tidak sama dengan orang lain. Bot akan otomatis menambahkan `-bisa`, `-info`, dan `-gagal` di belakangnya. Jadi kalau kalian isi `budi-absen`, notif akan dikirim ke `budi-absen-bisa`, `budi-absen-info`, dan `budi-absen-gagal`. Jangan dikosongkan — kalau kosong, kalian tidak akan dapat notifikasi sama sekali, dan bot bisa gagal diam-diam tanpa kalian tahu.
 
 ---
 
@@ -89,13 +88,13 @@ Gratis. Tidak butuh akun. Satu-satunya hal yang diminta adalah kalian install sa
 - Android → [Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy)
 - iOS → [App Store](https://apps.apple.com/app/ntfy/id1625396347)
 
-**b. Subscribe ke 3 topik berikut** (ganti `budi-absen-usk` dengan `NTFY_TOPIC` milik kalian):
+**b. Subscribe ke 3 topik berikut** (ganti `budi-absen` dengan `NTFY_TOPIC` milik kalian):
 
 | Topik | Artinya |
 |-------|---------|
-| `budi-absen-usk-bisa` | ✅ Absen berhasil — lanjut tidur, kalian aman |
-| `budi-absen-usk-info` | ℹ️ Bot jalan tapi tidak ada tombol absen — dosen belum buka, bukan salah kalian |
-| `budi-absen-usk-gagal` | 💀 Error — ini saatnya kalian melakukan sesuatu sendiri, untuk sekali ini |
+| `budi-absen-bisa` | ✅ Absen berhasil — lanjut tidur, kalian aman |
+| `budi-absen-info` | ℹ️ Bot jalan tapi tidak ada tombol absen — dosen belum buka, bukan salah kalian |
+| `budi-absen-gagal` | 💀 Error — ini saatnya kalian melakukan sesuatu sendiri, untuk sekali ini |
 
 Cara subscribe: buka ntfy → ikon `+` → ketik nama topik → Subscribe. Empat langkah. Kalian pasti bisa.
 
