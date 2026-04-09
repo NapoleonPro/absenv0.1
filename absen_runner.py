@@ -47,7 +47,6 @@ def kirim_notif_gagal(judul: str, pesan: str, topic: str):
         return
     os.system(f'curl -s -H "Title: {judul}" -d "{pesan}" ntfy.sh/{topic}')
 
-
 def main():
     print(f" Waktu sekarang: {datetime.now(WIB).strftime('%A, %d-%m-%Y %H:%M')} WIB")
 
